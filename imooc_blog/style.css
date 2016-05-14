@@ -1,0 +1,248 @@
+@charset "utf-8";
+
+* {
+      padding: 0;
+      margin: 0;
+}
+
+body{
+	/*border: 1px solid;*/
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.nav{
+	width: 100%;
+	height: 700px;
+	background-color: silver;
+}
+
+.nav ul{
+	list-style: none;
+}
+
+.nav ul li{
+	display: inline-block;
+	line-height: 50px;	
+	float: right;
+	margin-right: 20px;
+}
+
+.nav ul li a
+{
+	line-height: 40px;
+	display: inline-block;
+	text-decoration: none;
+	color: #fff;
+}
+
+
+section
+{
+	max-width: 200px;
+	text-align: center;
+	margin: 0 auto;
+	position: relative;
+	top: 200px;
+}
+
+section h1
+{
+	line-height: 70px;
+	margin: 0；
+}
+
+section button
+{
+	border: none;
+	margin-top:30px; 
+    padding:10px 20px;
+    color: #eee;
+    background-color: orange;
+    border-radius: 3px;
+}
+
+.nav section .more
+{
+	margin-top: 300px;
+}
+
+.nav .logo
+{
+	font-size:20px;
+	font-weight: 700;
+	letter-spacing:1px;
+	float: left;
+	padding: 12px;
+
+}
+
+.logo a
+{
+	color: #fff;
+	text-decoration: none;
+}
+
+.wrapper
+{
+	max-width: 1920px;
+	margin: 0 auto;
+	text-align: center;
+	background-color: #089d80;
+	color: #fff;
+	padding: 50px 0;
+}
+
+.green-part .hr
+{
+	width: 60%;
+	height: 2px;
+	background-color: #fff;
+	margin:20px auto;
+}
+
+.sub-heading
+{
+	font-size: 18px;
+}
+
+.green-part .icon-group
+{
+	margin-top: 120px;
+}
+
+.green-part .icon-group .icon
+{
+	width: 80px;
+	height: 80px;
+	margin: 20px;
+	display: inline-block;
+	border: 2px solid #0d6f7c;
+	border-radius: 10px;
+	transform: rotate(45deg);
+}
+
+.content .gray-part
+{
+	background-color: #252f34;
+}
+
+.gray-part .img-part
+{
+	width: 45%;
+	float: left;
+}
+
+.gray-part .text-part
+{
+	width: 55%;
+	color: #fff;
+	position: relative;
+	top: 60px;
+	left: 40px;
+}
+.img-part img
+{
+	width: 100%;
+}
+
+.part1 > div
+{
+	float: left;
+	font-size: 0;
+}
+
+.part1
+{
+	overflow: hidden;
+
+}
+
+.text-part h2
+{
+	margin-bottom: 20px;
+	font-size: 30px;
+}
+
+.text-part .sub-head
+{
+	padding-bottom:10px;
+	font-size: 20px;
+}
+
+.text-part p
+{
+	font-size: 16px;
+	max-width: 80%;
+}
+
+.part1:nth-child(odd)
+{
+	background-color: rgba(255,255,255,0.05);
+}
+
+.purple-part
+{
+	background-color:#3f3965;
+	color: #fff;
+}
+
+.purple-part
+{
+	padding-top: 80px;
+}
+
+.purple-part .head-wrapper
+{
+	text-align: center;
+}
+
+.purple-wrapper
+{
+	width: 80%;
+	margin: 0 auto;
+
+}
+
+.card
+{
+	float: left;
+	width: 50%;
+	min-height: 300px;
+	padding: 50px;
+	box-sizing: border-box;
+	/*border: 1px solid;*/
+}
+
+.cardgroup
+{
+	overflow: hidden;
+	padding:10px;
+}
+
+h3
+{
+	font-size: 24px;
+	padding: 10px 0;
+}
+
+.card:first-child
+{
+	background-color: rgba(0,0,0,0.05);
+}
+
+.card:nth-child(2)
+{
+	background-color: rgba(0,0,0,0.1);
+}
+
+.card:nth-child(3)
+{
+	background-color: rgba(0,0,0,0.15);
+}
+
+.card:nth-child(4)
+{
+	background-color: rgba(0,0,0,0.20);
+}
