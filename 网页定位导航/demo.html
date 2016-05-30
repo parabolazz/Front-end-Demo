@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>仿天猫首页定位导航</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		body{
+			font-size: 14px;
+			line-height: 1.7;
+		}
+
+		ul li{
+			list-style: none;
+		}
+
+		.main{
+			margin: 0 auto;
+			width: 740px;
+			padding: 10px 20px;
+			margin-bottom: 20px;
+			border: 1px dotted #0088bb;
+		}
+
+		.main h2{
+			font-size: 20px;
+			font-weight: bold; 
+			border-bottom: 2px solid #0088bb;
+			margin-bottom: 10px;
+			margin-left: 10px;
+			color: #2196F3;
+		}
+		.main li{
+			display: inline-block;
+			margin-left: 10px;
+		}
+
+		.main li a img{
+			width: 230px;
+
+		}
+
+		#menu{
+			position: fixed;
+			top: 100px;
+			left: 50%;
+			margin-left: 400px;
+			width: 70px;
+		}
+
+
+
+		#menu ul li a{
+			display: block;
+			color: #333;
+			width: 80px;
+			height: 50px;
+			line-height: 50px; 
+			text-decoration: none;
+			text-align: center;
+			transition: background .2s;
+
+		}
+
+		#menu ul li a:hover,
+		#menu ul li a.active{
+			color: #fff;
+			background: #2196F3;
+		}
+	
+	</style>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js
+"></script>
+	<script>
+		$(function(){
+			//监听滚动事件
+			$(window).scroll(function(){
+				var top = $(document).scrollTop();
+				var mains = $(".main");
+				var menu = $("#menu");
+				var activeid = "";
+				mains.each(function(){
+				 	var mainstop = $(this).offset().top;
+				 	if (top > mainstop - 100) {
+				 		activeid = "#"+$(this).attr("id");
+				 	}else{ return false; }
+				})	
+				//给相应的menu设置active的class
+				var activea = menu.find(".active");//找到滚动后上次激活的menu
+				//无滚动或者滚动后仍然停留在原来的页面，则不作处理
+				if (activeid && activea.attr("href") != activeid) {
+					//移除旧menu的class，然后赋给新的menu
+					activea.removeClass("active");
+					menu.find("[href='"+activeid+"']").addClass("active");
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="menu">
+		<ul>
+			<li><a href="#main1" class="active">1楼 电子</a></li>
+			<li><a href="#main2">2楼 服装</a></li>
+			<li><a href="#main3">3楼 日用</a></li>
+			<li><a href="#main4">4楼 食品</a></li>
+			<li><a href="#main5">5楼 生鲜</a></li>
+		</ul>
+	</div>
+	<div id="main1" class="main"> 
+		<h2>1楼 电子</h2>
+		<ul>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+		</ul>
+	</div>
+	<div id="main2" class="main"> 
+		<h2>2楼 服装</h2>
+		<ul>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+		</ul>
+	</div>
+	<div id="main3" class="main"> 
+		<h2>3楼 日用</h2>
+		<ul>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+		</ul>
+	</div>
+	<div id="main4" class="main"> 
+		<h2>4楼 食品</h2>
+		<ul>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+		</ul>
+	</div>
+	<div id="main5" class="main"> 
+		<h2>5楼 生鲜</h2>
+		<ul>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+			<li><a href="#"><img src="01.jpg" alt="电子"></a></li>
+		</ul>
+	</div>
+</body>
+</html>
