@@ -48,7 +48,7 @@
                 var left = parseInt(list.style.left)+ offset;
                 var time = 300;  //切换总时长
                 var delay = 10;  //隔多少时间执行一次
-                var speed = offset/(time/delay); //每次位移的位移量
+                var speed = praseInt(offset/(time/delay)); //每次位移的位移量
                 //切换动画函数
                 function go(){
                     //判断是向左滑动还是向右滑动
