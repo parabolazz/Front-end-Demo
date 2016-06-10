@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象拖拽</title>
+	<style>
+		#div1{width: 200px; height: 200px; background-color: red; position: absolute;}
+		#div2{width: 200px; height: 200px; background-color: green; position: absolute;}
+	</style>
+	<script>
+	window.onload = function(){
+		new Drag('div1');
+		new LimitDrag('div2');
+	};
+	//这是父类
+	function Drag(id) {
+		var that = this;
+		this.disX = 0;
+		this.disY = 0;
+		this.oDiv = document.getElementById(id);
+		this.oDiv.onmousedown = function(e){
+			//在匿名函数里，this指向window，所以要把外面的this传进来
+			that.mousedown(e);
+		};
+	};		
+
+	Drag.prototype.mousedown = function (e){
+		var that = this;
+		this.disX = e.clientX-this.oDiv.offsetLeft;//鼠标和物体左侧的距离
+		this.disY = e.clientY-this.oDiv.offsetTop;//鼠标和物体顶部的距离
+		document.onmousemove = function(e){
+			that.mousemove(e);
+		};
+		document.onmouseup = function(){
+			that.mouseup();
+		};
+	}
+
+	Drag.prototype.mousemove = function (e){
+		this.oDiv.style.left = e.clientX-this.disX+'px';
+		this.oDiv.style.top = e.clientY-this.disY+'px';
+	}
+
+	Drag.prototype.mouseup = function (){
+		document.onmousemove = null;
+		document.onmouseup = null;
+	}
+
+	//这是子类
+	//如果我用组合继承，浏览器报错
+	function LimitDrag(id){
+		Drag.call(this,id);
+	}
+	// LimitDrag.prototype = new Drag();
+
+	//这是教程给的继承方法，相当于一种浅复制？
+	//这样的方法继承，就不会出现 Cannot set property 'onmousedown' of null
+	for (var i in Drag.prototype) {
+		LimitDrag.prototype[i] = Drag.prototype[i];
+	}
+
+	LimitDrag.prototype.mousemove = function(e){
+		var l = e.clientX-this.disX;
+		var t = e.clientY-this.disY;
+		if (l < 0) {l=0}
+		else if(l > document.documentElement.clientWidth - this.oDiv.clientWidth){
+			l = document.documentElement.clientWidth - this.oDiv.clientWidth;
+		}
+		this.oDiv.style.left = l+'px';
+		this.oDiv.style.top = t+'px';
+	}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+</body>
+</html>
