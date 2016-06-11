@@ -19,7 +19,6 @@
 		this.disY = 0;
 		this.oDiv = document.getElementById(id);
 		this.oDiv.onmousedown = function(e){
-			//在匿名函数里，this指向window，所以要把外面的this传进来
 			that.mousedown(e);
 		};
 	};		
@@ -52,12 +51,12 @@
 		Drag.call(this,id);
 	}
 	// LimitDrag.prototype = new Drag();
-
+	LimitDrag.prototype = Drag.prototype;
 	//这是教程给的继承方法，相当于一种浅复制？
 	//这样的方法继承，就不会出现 Cannot set property 'onmousedown' of null
-	for (var i in Drag.prototype) {
-		LimitDrag.prototype[i] = Drag.prototype[i];
-	}
+	// for (var i in Drag.prototype) {
+	// 	LimitDrag.prototype[i] = Drag.prototype[i];
+	// }
 
 	LimitDrag.prototype.mousemove = function(e){
 		var l = e.clientX-this.disX;
