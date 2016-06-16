@@ -30,13 +30,16 @@ background-size: length|percentage|cover|contain;
 ####display:none 和 visibility: hidden 的差异
 
 - 占据空间
+
 `display: none` 的元素，失去宽高等所有属性，相当于脱离了布局，周围元素将并拢。
 `visibility: hidden` 相当于给元素加了完全透明效果，高度宽度，占据的空间还在。
 
 - 性能
+
 `display:none` 会造成 reflow 和 repaint，而 `visibility: hidden` 因为位置没有移动，只引发了repaint.
 
 - 诛连
+
 `display: none` 之后，其子元素设置 `display` 属性将失效，而 `visibility: hidden` 的子元素设置 `visibility` 仍然有效。
 
 ####CSS样式失效？
