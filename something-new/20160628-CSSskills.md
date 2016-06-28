@@ -3,7 +3,7 @@
 如何让元素里的文字溢出时显示`...`？这个小小的问题背后牵扯到几个 CSS 属性。
 ### white-space？
 说到溢出的处理，我们可能会想到 white-space，我们来回顾一下 white-space 的值：
-```CSS
+```javascript
 white-space:
             normal //默认值，空白符合并，换行符 -> 空白符，遇到盒子边界换行
             nowrap //顾名思义“不包裹”，连续的换行符，空白符会合并，但遇到边界不换行
@@ -15,7 +15,7 @@ white-space:
 
 ### overflow
 规定子元素溢出时元素如何表现
-```CSS
+```javascript
 overflow:
         visible //默认值，溢出时不“修剪”，直接暴露内容
         hidden //溢出时直接修剪内容，不显示
@@ -27,7 +27,7 @@ overflow:
 
 ### text-overflow
 为什么要先讲 overflow ，再来讲 text-overflow 呢，因为后者需要前者的**“修剪”属性值**，text-overflow 决定溢出时内容如何修剪，它的前提是 overflow 值设置为**可修剪的**
-```CSS
+```javascript
 //overflow设置为hidden
 text-overflow:
              clip //直接修剪
@@ -42,12 +42,20 @@ var a = b || c
 ```
 对于只知道`if(a||b)`的我来说，将布尔值赋给一个变量是奇怪的。
 如果我们对其进行测试：
-```
+```javascript
 var a = 3, b = 1, c = 0;
-a||c //3 知识点一：|| 的短路操作是针对 true 值的，遇到 true 则停止并取该值，否则继续运算，直到找到 true 或结束
-a&&c //0        && 的短路操作是针对 false 值的，遇到 false 则停止并取该值，否则继续运算，直到找到 false 或结束
-a||b //3 知识点二：|| 和 && 其实并不整体返回布尔值，而是在 if 中，if 将两者的返回值再进行布尔值转换，这涉及到null.NaN,boolean,undefined,0 -> false
+a||c //3  3 的值被转为 true，短路操作遇到 true 停止，返回 3
+a&&c //0        
+a||b //3  
 a&&b //1
-c||b //1
+c||b //1  c 的值被转为 false，继续判断 b ，b 转为 true，返回 b 值，如果 b 转为 false，还是会返回 b ，因为操作符无论如何都会返回一个值
 c&&b //0
+
+知识点一： || 和 && 在进行判断的时候，是将值转为布尔值再进行判断的，null.NaN,boolean,undefined,0 , '' 会判断为 false，而 "0" 和其他（待定）会判断为 true
+
+知识点二：
+|| 的短路操作是针对 true 值的，遇到 true 则停止并取该值，否则继续运算，直到找到 true 或结束
+&& 的短路操作是针对 false 值的，遇到 false 则停止并取该值，否则继续运算，直到找到 false 或结束
+         
+知识点三：|| 和 && 其实并不整体返回布尔值，而是在 if 中，if 将两者的返回值再进行布尔值转换，比如： a&&c === 0 -> if(a&&c) === false
 ```
